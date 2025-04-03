@@ -144,9 +144,10 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-  <section class="relative pt-20 pb-32 px-6">
+ <!-- Hero Section -->
+<section class="relative pt-20 pb-32 px-6">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+        
         <!-- Left Content -->
         <div class="md:w-1/2 mb-12 md:mb-0">
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-fredoka font-bold leading-tight mb-6">
@@ -182,30 +183,29 @@
                     <p class="text-sm">Join 1,200+ people learning with us!</p>
                 </div>
             </div>
-        </div>
-<!-- Lottie Animation -->
-<div class="mt-12">
-    <dotlottie-wc
-        src="https://lottie.host/631942d4-39f1-4bc5-aa26-39871111c075/Kck61SJxZs.lottie"
-        background="transparent"
-        speed="1"
-        style="width: 100%; max-width: 500px;"
-        autoplay
-        loop
-    ></dotlottie-wc>
-<!-- Closing tags properly added for Hero Section -->
-</div> <!-- Closing Hero text div -->
-</div> <!-- Closing container div -->
 
-        <!-- Right Video Embed -->
+            <!-- Lottie Animation (Now properly positioned under the text) -->
+            <div class="mt-12">
+                <dotlottie-wc
+                    src="https://lottie.host/631942d4-39f1-4bc5-aa26-39871111c075/Kck61SJxZs.lottie"
+                    background="transparent"
+                    speed="1"
+                    style="width: 100%; max-width: 500px;"
+                    autoplay
+                    loop
+                ></dotlottie-wc>
+            </div>
+        </div>
+
+        <!-- Right Video Embed (Now correctly positioned inside the flex container) -->
         <div class="md:w-1/2 flex justify-center items-center">
             <div class="rounded-3xl overflow-hidden shadow-xl">
                 <iframe width="100%" height="300" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
-    </div>
-</section>
 
+    </div> <!-- Closing .container div -->
+</section>
     <!-- Problem Section -->
     <section id="problem" class="py-20 px-6 bg-white">
         <div class="container mx-auto">
