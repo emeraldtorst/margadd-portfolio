@@ -695,27 +695,41 @@
             </div>
             
             <!-- Newsletter -->
-            <div class="bg-gradient-to-r from-green-400 to-blue-400 rounded-super p-1 shadow-xl">
-                <div class="bg-white rounded-super p-8 md:p-10">
-                    <div class="md:flex items-center">
-                        <div class="md:w-1/2 mb-8 md:mb-0">
-                            <h3 class="font-fredoka text-3xl font-bold mb-3">Get Recycling Tips via Email!</h3>
-                            <p>Monthly updates with colorful guides, events, and Vienna waste news.</p>
-                        </div>
-                        <div class="md:w-1/2">
-                            <div class="flex">
-                                <input type="email" placeholder="Your email" class="flex-grow px-5 py-3 rounded-l-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-400">
-                                <button class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-r-full font-bold">
-                                    Sign Up
-                                </button>
-                            </div>
-                            <p class="text-sm mt-3 text-gray-500">We'll never spam you. Pinky promise! 🤙</p>
-                        </div>
-                    </div>
-                </div>
+<section class="px-6 py-20 bg-white">
+  <div class="bg-gradient-to-r from-green-400 to-blue-400 rounded-xl p-1 shadow-xl">
+    <div class="bg-white rounded-xl p-8 md:p-10">
+      <form action="https://formspree.io/f/xpwpylwk" method="POST">
+        <div class="md:flex items-center">
+          <!-- Left Content -->
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h3 class="font-fredoka text-3xl font-bold mb-3">Get Recycling Tips via Email!</h3>
+            <p>Monthly updates with colorful guides, events, and Vienna waste news.</p>
+          </div>
+
+          <!-- Form Input -->
+          <div class="md:w-1/2">
+            <div class="flex">
+              <input 
+                type="email" 
+                name="email"
+                placeholder="Your email" 
+                required
+                class="flex-grow px-5 py-3 rounded-l-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+              <button 
+                type="submit" 
+                class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-r-full font-bold hover:opacity-90 transition"
+              >
+                Sign Up
+              </button>
             </div>
+            <p class="text-sm mt-3 text-gray-500">We'll never spam you. Pinky promise! 🤙</p>
+          </div>
         </div>
-    </section>
+      </form>
+    </div>
+  </div>
+</section>
 
     <!-- FAQ -->
     <section class="py-20 px-6 bg-gradient-to-br from-blue-50 to-green-50">
