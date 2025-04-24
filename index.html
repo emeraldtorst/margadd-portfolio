@@ -3,913 +3,859 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vienna Trashtalk | Fun Waste Sorting Guides</title>
+    <title>Senior UI/UX Designer & Marketing Strategist Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/three@0.132.2/build/three.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.11.4/dist/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script
-  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.3.0/dist/dotlottie-wc.js"
-  type="module"
-    ></script>
-
-
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Montserrat:wght@300;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
         
         :root {
-            --green: #7BD785;
-            --blue: #4FC9E8;
-            --yellow: #FFE066;
-            --coral: #FF8A7A;
-            --purple: #A68AFF;
-            --text: #2E3A40;
+            --neon-mint: #1affc9;
+            --royal-purple: #815bff;
+            --sunrise-pink: #ff6b9a;
+            --tangerine: #ff8a3d;
+            --electric-cyan: #00e5ff;
+            --dark-bg: #0f0f1a;
         }
         
         body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text);
-            background-color: #F9F9F9;
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, var(--sunrise-pink), var(--tangerine), var(--electric-cyan));
+            background-size: 400% 400%;
+            animation: gradientShift 45s ease infinite;
+            color: white;
+            margin: 0;
+            padding: 0;
+            transition: background 0.5s ease;
         }
         
-        h1, h2, h3, .font-fredoka {
-            font-family: 'Fredoka', sans-serif;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
-        .rounded-super {
-            border-radius: 2rem;
+        .dark-mode {
+            background: var(--dark-bg);
         }
         
-        .btn-hover {
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .glass-card:hover {
+            box-shadow: 0 8px 32px rgba(129, 91, 255, 0.3);
+            border: 1px solid rgba(129, 91, 255, 0.4);
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 8px var(--neon-mint);
+        }
+        
+        .purple-glow {
+            box-shadow: 0 0 15px rgba(129, 91, 255, 0.7);
+        }
+        
+        .mint-glow {
+            box-shadow: 0 0 15px rgba(26, 255, 201, 0.7);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--neon-mint), var(--royal-purple));
+            border: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(26, 255, 201, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--neon-mint);
+            color: var(--neon-mint);
             transition: all 0.3s ease;
         }
         
-        .btn-hover:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        .btn-secondary:hover {
+            background: var(--neon-mint);
+            color: black;
         }
         
-        .btn-hover:active {
-            transform: translateY(1px);
+        .floating {
+            animation: floating 6s ease-in-out infinite;
         }
         
-        .waste-card {
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .scroll-down-arrow {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        
+        .typing {
+            overflow: hidden;
+            border-right: 2px solid var(--neon-mint);
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--neon-mint); }
+        }
+        
+        .neon-flicker {
+            animation: neon-flicker 2s infinite alternate;
+        }
+        
+        @keyframes neon-flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 0 0 8px var(--neon-mint), 0 0 16px var(--neon-mint);
+            }
+            20%, 24%, 55% {        
+                text-shadow: none;
+            }
+        }
+        
+        .stat-pill {
+            background: rgba(255, 255, 255, 0.15);
+            border-left: 3px solid var(--neon-mint);
+        }
+        
+        .testimonial-cube {
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+        
+        .testimonial-cube-face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+        }
+        
+        .timeline-card {
+            transition: all 0.5s ease;
+        }
+        
+        .timeline-card.active {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(129, 91, 255, 0.5);
+        }
+        
+        .social-icon {
             transition: all 0.3s ease;
-            cursor: pointer;
+            color: white;
         }
         
-        .waste-card:hover {
-            transform: translateY(-8px) scale(1.02);
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: var(--neon-mint);
         }
         
-        .wiggle:hover {
-            animation: wiggle 0.6s ease;
+        #threejs-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
         
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(3deg); }
-            75% { transform: rotate(-3deg); }
+        .dark-mode-toggle {
+            transition: all 0.5s ease;
         }
         
-        .bounce-in {
-            animation: bounceIn 0.8s ease;
+        .dark-mode-toggle:hover {
+            transform: rotate(180deg);
         }
         
-        @keyframes bounceIn {
-            0% { transform: scale(0.9); opacity: 0; }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); opacity: 1; }
+        .dark-mode-toggle.dark {
+            color: var(--neon-mint);
         }
         
-        .pulse {
-            animation: pulse 2s infinite;
+        .dark-mode-toggle.light {
+            color: #ffd700;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        @media (prefers-reduced-motion) {
+            .floating, .scroll-down-arrow, .typing, .neon-flicker, .testimonial-cube, .timeline-card {
+                animation: none !important;
+                transition: none !important;
+            }
+            
+            body {
+                animation: none !important;
+                background: linear-gradient(135deg, var(--sunrise-pink), var(--tangerine)) !important;
+            }
         }
     </style>
 </head>
-<body>
-
-    <!-- Animated Background Elements -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute top-20 left-10 w-32 h-32 rounded-full bg-yellow-100 opacity-20 blur-xl"></div>
-        <div class="absolute bottom-1/4 right-20 w-48 h-48 rounded-full bg-green-100 opacity-20 blur-xl"></div>
-        <div class="absolute top-1/3 right-1/4 w-24 h-24 rounded-full bg-blue-100 opacity-20 blur-xl"></div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="relative z-50 py-4 px-6">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-3">
-                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
-<dotlottie-wc src="https://lottie.host/7bc4bc81-4199-4f42-9319-8c13efb61b5a/VOzXsgCG2u.lottie" background="transparent" speed="1" style="width: 40px; height: 40px;" loop autoplay></dotlottie-wc>
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" class="fixed top-6 right-6 z-50 dark-mode-toggle light text-2xl p-2 rounded-full bg-black bg-opacity-20">
+        <i class="fas fa-sun"></i>
+    </button>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen flex flex-col justify-center items-center px-6 overflow-hidden">
+        <div id="threejs-container"></div>
+        <div class="text-center z-10 max-w-4xl">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 text-white neon-text">
+                <span class="inline-block overflow-hidden">
+                    <span class="inline-block slide-in">DESIGN</span>
+                </span>
+                <span class="inline-block overflow-hidden">
+                    <span class="inline-block slide-in">THAT</span>
+                </span>
+                <span class="inline-block overflow-hidden">
+                    <span class="inline-block slide-in">MOVES</span>
+                </span>
+                <span class="inline-block overflow-hidden">
+                    <span class="inline-block slide-in">METRICS</span>
+                </span>
+            </h1>
+            <p class="text-xl md:text-2xl mt-8 mb-12 typing neon-flicker">
+                UI/UX Designer • Marketing Strategist • Experience Architect
+            </p>
+            <div class="flex justify-center gap-4">
+                <button class="btn-primary px-8 py-4 rounded-full text-lg ripple">
+                    View Case Studies
+                </button>
+                <button class="btn-secondary px-8 py-4 rounded-full text-lg">
+                    Contact Me
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-down-arrow">
+            <i class="fas fa-chevron-down text-3xl animate-bounce"></i>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="min-h-screen py-20 px-6 md:px-12 lg:px-24">
+        <h2 class="text-5xl md:text-7xl font-bold mb-20 text-center neon-text">ABOUT</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 opacity-70 animate-spin-slow"></div>
+                    <div class="absolute inset-2 rounded-full bg-black bg-opacity-70 flex items-center justify-center overflow-hidden">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
                 </div>
-                <span class="font-fredoka text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-blue-500">Vienna Trashtalk</span>
-            </a>
-            
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#problem" class="font-medium hover:text-blue-500 transition flex items-center group">
-                    <span class="group-hover:scale-110 transition inline-block">The Mess</span>
-                </a>
-                <a href="#guide" class="font-medium hover:text-green-500 transition flex items-center group">
-                    <span class="group-hover:scale-110 transition inline-block">Sorting Guide</span>
-                </a>
-                <a href="#map" class="font-medium hover:text-yellow-500 transition flex items-center group">
-                    <span class="group-hover:scale-110 transition inline-block">Bin Finder</span>
-                </a>
-                <a href="#join" class="px-5 py-3 rounded-full font-bold bg-gradient-to-r from-green-400 to-blue-400 text-white shadow-lg btn-hover wiggle">
-                    Join the Fun!
-                </a>
+            </div>
+            <div>
+                <h3 class="text-3xl md:text-4xl font-bold mb-6">Innovation Through Design & Strategy</h3>
+                <p class="text-lg md:text-xl mb-8 leading-relaxed">
+                    With 12+ years at the intersection of design, marketing, and experiential production, I craft digital experiences that convert and live events that captivate. My hybrid expertise delivers measurable impact across the customer journey.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="stat-pill p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-neon-mint count-up" data-target="7500">0</div>
+                        <div class="text-sm opacity-80">UI/UX Hours</div>
+                    </div>
+                    <div class="stat-pill p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-neon-mint count-up" data-target="142">0</div>
+                        <div class="text-sm opacity-80">Campaigns Led</div>
+                    </div>
+                    <div class="stat-pill p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-neon-mint count-up" data-target="68">0</div>
+                        <div class="text-sm opacity-80">Events Hosted</div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <button class="btn-primary px-6 py-3 rounded-full text-lg ripple">
+                        Download Resume
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="min-h-screen py-20 px-6">
+        <h2 class="text-5xl md:text-7xl font-bold mb-20 text-center neon-text">CASE STUDIES</h2>
+        <div class="relative max-w-6xl mx-auto">
+            <div class="carousel-container overflow-x-auto py-10 px-4">
+                <div class="flex gap-8 carousel-track" style="width: 300%;">
+                    <!-- Case Study 1 -->
+                    <div class="glass-card w-full md:w-1/3 flex-shrink-0 p-8 transition-all duration-500 hover:transform hover:scale-105">
+                        <div class="mb-6">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center mb-4">
+                                <i class="fas fa-mobile-alt text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">FinTech App Redesign</h3>
+                            <p class="text-sm opacity-80">Mobile Banking Experience</p>
+                        </div>
+                        <p class="mb-6">
+                            Transformed engagement metrics by 62% through intuitive UX flows and behavioral psychology principles.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-black bg-opacity-30 px-3 py-1 rounded-full">UI/UX</span>
+                            <button class="text-neon-mint flex items-center">
+                                View Case <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Case Study 2 -->
+                    <div class="glass-card w-full md:w-1/3 flex-shrink-0 p-8 transition-all duration-500 hover:transform hover:scale-105">
+                        <div class="mb-6">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center mb-4">
+                                <i class="fas fa-bullhorn text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Global Product Launch</h3>
+                            <p class="text-sm opacity-80">Integrated Marketing Campaign</p>
+                        </div>
+                        <p class="mb-6">
+                            Orchestrated 360° campaign that drove 42% conversion lift and $8.2M in incremental revenue.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-black bg-opacity-30 px-3 py-1 rounded-full">Marketing</span>
+                            <button class="text-neon-mint flex items-center">
+                                View Case <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Case Study 3 -->
+                    <div class="glass-card w-full md:w-1/3 flex-shrink-0 p-8 transition-all duration-500 hover:transform hover:scale-105">
+                        <div class="mb-6">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center mb-4">
+                                <i class="fas fa-calendar-check text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Tech Conference</h3>
+                            <p class="text-sm opacity-80">5,000+ Attendee Experience</p>
+                        </div>
+                        <p class="mb-6">
+                            Designed immersive journey that achieved 94% attendee satisfaction and 35% social amplification.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-black bg-opacity-30 px-3 py-1 rounded-full">Events</span>
+                            <button class="text-neon-mint flex items-center">
+                                View Case <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-12 gap-2">
+                <button class="carousel-prev w-12 h-12 rounded-full bg-black bg-opacity-20 flex items-center justify-center">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-next w-12 h-12 rounded-full bg-black bg-opacity-20 flex items-center justify-center">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Process Timeline -->
+    <section id="process" class="min-h-screen py-20 px-6">
+        <h2 class="text-5xl md:text-7xl font-bold mb-20 text-center neon-text">PROCESS</h2>
+        <div class="max-w-4xl mx-auto">
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 to-cyan-400"></div>
+                
+                <!-- Timeline Items -->
+                <div class="space-y-20">
+                    <!-- Item 1 -->
+                    <div class="relative flex items-center">
+                        <div class="hidden md:block w-1/2"></div>
+                        <div class="z-10 w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 absolute left-1/2 transform -translate-x-1/2"></div>
+                        <div class="glass-card w-full md:w-1/2 p-8 ml-0 md:ml-8 timeline-card">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center mr-4">
+                                    <i class="fas fa-search text-xl text-neon-mint"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold">Discovery</h3>
+                            </div>
+                            <p>
+                                Deep dive into business objectives, user behaviors, and technical constraints through stakeholder interviews, analytics audit, and competitive analysis.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="relative flex items-center">
+                        <div class="glass-card w-full md:w-1/2 p-8 mr-0 md:mr-8 timeline-card">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center mr-4">
+                                    <i class="fas fa-lightbulb text-xl text-neon-mint"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold">Strategy</h3>
+                            </div>
+                            <p>
+                                Synthesize insights into actionable frameworks: user journeys, conversion funnels, and experience principles that align business and user goals.
+                            </p>
+                        </div>
+                        <div class="z-10 w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 absolute left-1/2 transform -translate-x-1/2"></div>
+                        <div class="hidden md:block w-1/2"></div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="relative flex items-center">
+                        <div class="hidden md:block w-1/2"></div>
+                        <div class="z-10 w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 absolute left-1/2 transform -translate-x-1/2"></div>
+                        <div class="glass-card w-full md:w-1/2 p-8 ml-0 md:ml-8 timeline-card">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center mr-4">
+                                    <i class="fas fa-pencil-ruler text-xl text-neon-mint"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold">Design</h3>
+                            </div>
+                            <p>
+                                Rapid prototyping of interfaces and interactions, validated through usability testing and iterative refinement of the experience.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 4 -->
+                    <div class="relative flex items-center">
+                        <div class="glass-card w-full md:w-1/2 p-8 mr-0 md:mr-8 timeline-card">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-black bg-opacity-30 flex items-center justify-center mr-4">
+                                    <i class="fas fa-rocket text-xl text-neon-mint"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold">Execution</h3>
+                            </div>
+                            <p>
+                                Pixel-perfect implementation with design systems, developer handoff, and QA to ensure flawless deployment across platforms.
+                            </p>
+                        </div>
+                        <div class="z-10 w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 absolute left-1/2 transform -translate-x-1/2"></div>
+                        <div class="hidden md:block w-1/2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section id="testimonials" class="min-h-screen py-20 px-6">
+        <h2 class="text-5xl md:text-7xl font-bold mb-20 text-center neon-text">TESTIMONIALS</h2>
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+                <div class="relative w-64 h-64 testimonial-cube">
+                    <!-- Front -->
+                    <div class="testimonial-cube-face bg-black bg-opacity-50 rounded-lg" style="transform: translateZ(100px);">
+                        <img src="https://logo.clearbit.com/google.com?size=80" alt="Google" class="w-32">
+                    </div>
+                    <!-- Right -->
+                    <div class="testimonial-cube-face bg-black bg-opacity-50 rounded-lg" style="transform: rotateY(90deg) translateZ(100px);">
+                        <img src="https://logo.clearbit.com/amazon.com?size=80" alt="Amazon" class="w-32">
+                    </div>
+                    <!-- Back -->
+                    <div class="testimonial-cube-face bg-black bg-opacity-50 rounded-lg" style="transform: rotateY(180deg) translateZ(100px);">
+                        <img src="https://logo.clearbit.com/microsoft.com?size=80" alt="Microsoft" class="w-32">
+                    </div>
+                    <!-- Left -->
+                    <div class="testimonial-cube-face bg-black bg-opacity-50 rounded-lg" style="transform: rotateY(-90deg) translateZ(100px);">
+                        <img src="https://logo.clearbit.com/apple.com?size=80" alt="Apple" class="w-32">
+                    </div>
+                    <!-- Top -->
+                    <div class="testimonial-cube-face bg-black bg-opacity-50 rounded-lg" style="transform: rotateX(90deg) translateZ(100px);">
+                        <img src="https://logo.clearbit.com/facebook.com?size=80" alt="Facebook" class="w-32">
+                    </div>
+                    <!-- Bottom -->
+                    <div class="testimonial-cube-face bg-black bg-opacity-50 rounded-lg" style="transform: rotateX(-90deg) translateZ(100px);">
+                        <img src="https://logo.clearbit.com/netflix.com?size=80" alt="Netflix" class="w-32">
+                    </div>
+                </div>
+                
+                <div class="glass-card p-8 max-w-md testimonial-quote">
+                    <div class="text-2xl mb-6 leading-relaxed">
+                        "Transformed our conversion funnel with intuitive UX that reduced drop-offs by 38% while increasing average order value."
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center mr-4">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold">Sarah Johnson</div>
+                            <div class="text-sm opacity-80">Director of Product, Google</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <button id="mobileMenuButton" class="md:hidden text-2xl bg-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
-                <i class="fas fa-bars"></i>
+            <div class="flex justify-center mt-12 gap-4">
+                <button class="testimonial-prev w-12 h-12 rounded-full bg-black bg-opacity-20 flex items-center justify-center">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="testimonial-next w-12 h-12 rounded-full bg-black bg-opacity-20 flex items-center justify-center">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section id="cta" class="py-32 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-70 z-0"></div>
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+             alt="Event Background" class="absolute inset-0 w-full h-full object-cover z-0">
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-8">Ready to Elevate Your Experience?</h2>
+            <p class="text-xl mb-12 max-w-2xl mx-auto">
+                Whether it's a digital product, marketing campaign, or live event—let's create something remarkable together.
+            </p>
+            <button class="btn-primary px-10 py-5 rounded-full text-xl ripple">
+                Schedule a Consultation
             </button>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden hidden absolute top-20 left-6 right-6 bg-white rounded-3xl shadow-xl p-6 z-50 bounce-in">
-            <div class="flex flex-col space-y-4">
-                <a href="#problem" class="px-4 py-3 rounded-full font-medium hover:bg-green-50 transition">The Mess</a>
-                <a href="#guide" class="px-4 py-3 rounded-full font-medium hover:bg-blue-50 transition">Sorting Guide</a>
-                <a href="#map" class="px-4 py-3 rounded-full font-medium hover:bg-yellow-50 transition">Bin Finder</a>
-                <a href="#join" class="px-4 py-3 rounded-full font-bold bg-gradient-to-r from-green-400 to-blue-400 text-white text-center">
-                    Join the Fun!
-                </a>
-            </div>
-        </div>
-    </nav>
-
- <!-- Hero Section -->
-<section class="relative pt-20 pb-32 px-6">
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
-        
-        <!-- Left Content -->
-        <div class="md:w-1/2 mb-12 md:mb-0">
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-fredoka font-bold leading-tight mb-6">
-                Let's Recycle <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500">Right, Vienna!</span>
-            </h1>
-            <p class="text-xl mb-8 text-gray-600 max-w-lg">
-                Sorting waste shouldn't feel like a pop quiz in German class. Our fun guides make Vienna's recycling system easy for everyone!
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#guide" class="px-8 py-4 rounded-full font-bold bg-gradient-to-r from-green-400 to-blue-400 text-white shadow-lg btn-hover wiggle flex items-center">
-                    Start Sorting <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-                <a href="#problem" class="px-6 py-3 rounded-full font-medium bg-white shadow-md btn-hover flex items-center">
-                    Why It Matters <i class="fas fa-question-circle ml-2"></i>
-                </a>
-            </div>
-
-            <!-- User rating section -->
-            <div class="mt-12 flex items-center space-x-4">
-                <div class="flex -space-x-3">
-                    <img src="https://i.pravatar.cc/40?img=5" alt="User" class="w-10 h-10 rounded-full border-2 border-white">
-                    <img src="https://i.pravatar.cc/40?img=6" alt="User" class="w-10 h-10 rounded-full border-2 border-white">
-                    <img src="https://i.pravatar.cc/40?img=7" alt="User" class="w-10 h-10 rounded-full border-2 border-white">
-                </div>
-                <div>
-                    <div class="flex items-center">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i>
-                        <i class="fas fa-star text-yellow-400 mr-1"></i>
-                        <i class="fas fa-star text-yellow-400 mr-1"></i>
-                        <i class="fas fa-star text-yellow-400 mr-1"></i>
-                        <i class="fas fa-star text-yellow-400"></i>
-                    </div>
-                    <p class="text-sm">Join our community to make Vienna greener and cleaner!</p>
-                </div>
-            </div>
-
-            <!-- Lottie Animation (Now properly positioned under the text) -->
-            <div class="mt-12">
-                <dotlottie-wc
-                    src="https://lottie.host/631942d4-39f1-4bc5-aa26-39871111c075/Kck61SJxZs.lottie"
-                    background="transparent"
-                    speed="1"
-                    style="width: 100%; max-width: 500px;"
-                    autoplay
-                    loop
-                ></dotlottie-wc>
-            </div>
-        </div>
-
-       <!-- Right Video Embed (Bigger video, still responsive) -->
-<div class="md:w-1/2 flex justify-center items-center">
-    <div class="rounded-3xl overflow-hidden shadow-xl w-full max-w-[700px]">
-        <iframe class="w-full h-[600px] md:h-[600px] lg:h-[600px]" 
-            src="https://www.youtube.com/embed/HPbOOqAMBmY?si" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
-    </div>
-</div>
-</section>
-   <!-- Problem Section -->
-<section id="problem" class="py-20 px-6 bg-white">
-  <div class="container mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="font-fredoka text-4xl md:text-5xl font-bold mb-6">
-        Why Vienna's Recycling Needs
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
-          Your Help
-        </span>
-      </h2>
-      <p class="text-xl max-w-3xl mx-auto">
-        When waste gets sorted wrong, it's like showing up to a costume party... in the wrong theme. Awkward for everyone.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8 mb-16">
-      <!-- Card 1 -->
-      <div class="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-xl shadow-md waste-card">
-        <div class="w-20 h-20 rounded-2xl bg-white flex items-center justify-center shadow-inner mb-6 mx-auto">
-          <dotlottie-wc src="https://lottie.host/7bc4bc81-4199-4f42-9319-8c13efb61b5a/VOzXsgCG2u.lottie" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></dotlottie-wc>
-        </div>
-        <h3 class="text-2xl font-fredoka font-bold text-center mb-3">39% Contamination</h3>
-        <p class="text-center">That's how much of Vienna's recycling is spoiled by wrong items. Yikes!</p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-gradient-to-br from-yellow-50 to-coral-50 p-8 rounded-xl shadow-md waste-card">
-        <div class="w-20 h-20 rounded-2xl bg-white flex items-center justify-center shadow-inner mb-6 mx-auto">
-          <dotlottie-wc src="https://lottie.host/7bc4bc81-4199-4f42-9319-8c13efb61b5a/VOzXsgCG2u.lottie" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></dotlottie-wc>
-        </div>
-        <h3 class="text-2xl font-fredoka font-bold text-center mb-3">200K+ Confused Residents</h3>
-        <p class="text-center">With international folks struggling to understand sorting rules.</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-gradient-to-br from-purple-50 to-blue-50 p-8 rounded-xl shadow-md waste-card">
-        <div class="w-20 h-20 rounded-2xl bg-white flex items-center justify-center shadow-inner mb-6 mx-auto">
-          <lottie-player src="https://assets4.lottiefiles.com/private_files/lf30_obidsi0t.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
-        </div>
-        <h3 class="text-2xl font-fredoka font-bold text-center mb-3">€5 Million Lost</h3>
-        <p class="text-center">Extra processing costs when recycling bins contain the wrong stuff.</p>
-      </div>
-    </div>
-  </div>
-
-
-            <div class="bg-gradient-to-r from-green-400 to-blue-400 rounded-super p-1 shadow-xl max-w-4xl mx-auto">
-                <div class="bg-white rounded-super p-8 md:p-12 flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 mb-8 md:mb-0">
-                        <h3 class="font-fredoka text-3xl font-bold mb-4">Our Superpower?</h3>
-                        <p class="mb-6">We turn confusing recycling rules into simple, visual guides that anyone can follow - no German degree required!</p>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm flex items-center">
-                                <i class="fas fa-check-circle mr-1"></i> English
-                            </div>
-                            <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm flex items-center">
-                                <i class="fas fa-check-circle mr-1"></i> Russian        
-                            </div>
-                            <div class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm flex items-center">
-                                <i class="fas fa-check-circle mr-1"></i> Turkish
-                            </div>
-                            <div class="bg-coral-100 text-coral-800 px-3 py-1 rounded-full text-sm flex items-center">
-                                <i class="fas fa-check-circle mr-1"></i> Simple Visuals
-                            </div>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2">
-<dotlottie-wc src="https://lottie.host/1d6d3aad-b58b-402f-86ab-83969b02f193/O2fl3DAvKY.lottie"background="transparent" speed="1" style="width: 100%;" loop autoplay></dotlottie-wc>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
-
-    <!-- Sorting Guide -->
-    <section id="guide" class="py-20 px-6 bg-gradient-to-br from-green-50 to-blue-50">
-        <div class="container mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="font-fredoka text-4xl md:text-5xl font-bold mb-6">Waste Sorting Made <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500">Stupid Easy</h2>
-                <p class="text-xl max-w-3xl mx-auto">Our step-by-step guides help you sort like a pro (without feeling like you're taking an exam).</p>
-            </div>
-            
-            <!-- Waste Types -->
-            <div class="grid md:grid-cols-4 gap-6 mb-16">
-                <!-- Paper -->
-                <div class="bg-white p-6 rounded-super shadow-md waste-card hover:shadow-lg">
-                    <div class="w-24 h-24 mx-auto mb-4">
-<dotlottie-wc src="https://lottie.host/7bc4bc81-4199-4f42-9319-8c13efb61b5a/VOzXsgCG2u.lottie" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></dotlottie-wc>             
-                    </div>
-                    <h3 class="font-fredoka text-xl text-center font-bold mb-2 text-blue-500">Paper & Cardboard</h3>
-                    <ul class="text-sm space-y-1 mb-4">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Newspapers</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Cardboard boxes</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Magazines</li>
-                        <li class="flex items-center"><i class="fas fa-times text-red-500 mr-2"></i> Pizza boxes</li>
-                    </ul>
-                    <button class="w-full mt-4 py-2 bg-blue-100 text-blue-600 rounded-full font-medium text-sm btn-hover">
-                        Learn More <i class="fas fa-chevron-right ml-1"></i>
-                    </button>
-                </div>
-                
-                <!-- Plastic/Metal -->
-                <div class="bg-white p-6 rounded-super shadow-md waste-card hover:shadow-lg">
-                    <div class="w-24 h-24 mx-auto mb-4">
-<dotlottie-wc src="https://lottie.host/7bc4bc81-4199-4f42-9319-8c13efb61b5a/VOzXsgCG2u.lottie" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></dotlottie-wc>           
-                    </div>
-                    <h3 class="font-fredoka text-xl text-center font-bold mb-2 text-yellow-500">Plastic & Metal</h3>
-                    <ul class="text-sm space-y-1 mb-4">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Bottles</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Yogurt cups</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Food cans</li>
-                        <li class="flex items-center"><i class="fas fa-times text-red-500 mr-2"></i> Plastic bags</li>
-                    </ul>
-                    <button class="w-full mt-4 py-2 bg-yellow-100 text-yellow-600 rounded-full font-medium text-sm btn-hover">
-                        Learn More <i class="fas fa-chevron-right ml-1"></i>
-                    </button>
-                </div>
-                
-                <!-- Bio -->
-                <div class="bg-white p-6 rounded-super shadow-md waste-card hover:shadow-lg">
-                    <div class="w-24 h-24 mx-auto mb-4">
-<dotlottie-wc src="https://lottie.host/7bc4bc81-4199-4f42-9319-8c13efb61b5a/VOzXsgCG2u.lottie" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></dotlottie-wc>             
-                    </div>
-                    <h3 class="font-fredoka text-xl text-center font-bold mb-2 text-green-500">Bio Waste</h3>
-                    <ul class="text-sm space-y-1 mb-4">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Fruit scraps</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Coffee grounds</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Eggshells</li>
-                        <li class="flex items-center"><i class="fas fa-times text-red-500 mr-2"></i> Meat & bones</li>
-                    </ul>
-                    <button class="w-full mt-4 py-2 bg-green-100 text-green-600 rounded-full font-medium text-sm btn-hover">
-                        Learn More <i class="fas fa-chevron-right ml-1"></i>
-                    </button>
-                </div>
-                
-                <!-- Glass -->
-                <div class="bg-white p-6 rounded-super shadow-md waste-card hover:shadow-lg">
-                    <div class="w-24 h-24 mx-auto mb-4">
-<dotlottie-wc src="https://lottie.host/7bc4bc81-4199-4f42-9319-8c13efb61b5a/VOzXsgCG2u.lottie" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></dotlottie-wc>             
-                    </div>
-                    <h3 class="font-fredoka text-xl text-center font-bold mb-2 text-purple-500">Glass</h3>
-                    <ul class="text-sm space-y-1 mb-4">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Bottles (clean)</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Jars (no lids)</li>
-                        <li class="flex items-center"><i class="fas fa-times text-red-500 mr-2"></i> Window glass</li>
-                        <li class="flex items-center"><i class="fas fa-times text-red-500 mr-2"></i> Drinking glasses</li>
-                    </ul>
-                    <button class="w-full mt-4 py-2 bg-purple-100 text-purple-600 rounded-full font-medium text-sm btn-hover">
-                        Learn More <i class="fas fa-chevron-right ml-1"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Interactive Sorter -->
-            <div class="bg-white rounded-super shadow-xl overflow-hidden max-w-4xl mx-auto">
-                <div class="md:flex">
-                    <div class="md:w-1/2 p-8 bg-gradient-to-br from-green-50 to-blue-50">
-                        <h3 class="font-fredoka text-2xl font-bold mb-4">Quick Waste Sorter</h3>
-                        <p class="mb-6">Not sure where something belongs? Search or tap an item:</p>
-                        
-                        <div class="bg-white rounded-xl p-4 shadow-inner">
-                            <div class="flex mb-4">
-                                <input type="text" placeholder="Search items..." class="flex-grow px-4 py-2 rounded-l-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-400">
-                                <button class="bg-green-500 text-white px-4 py-2 rounded-r-lg">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                            
-                            <div class="grid grid-cols-2 gap-2">
-                                <button class="bg-gray-100 hover:bg-green-100 rounded-lg py-2 px-3 text-sm transition flex items-center">
-                                    <i class="fas fa-pizza-slice text-coral-500 mr-2"></i> Pizza box
-                                </button>
-                                <button class="bg-gray-100 hover:bg-blue-100 rounded-lg py-2 px-3 text-sm transition flex items-center">
-                                    <i class="fas fa-wine-bottle text-blue-500 mr-2"></i> Glass bottle
-                                </button>
-                                <button class="bg-gray-100 hover:bg-yellow-100 rounded-lg py-2 px-3 text-sm transition flex items-center">
-                                    <i class="fas fa-shopping-bag text-yellow-500 mr-2"></i> Plastic bag
-                                </button>
-                                <button class="bg-gray-100 hover:bg-coral-100 rounded-lg py-2 px-3 text-sm transition flex items-center">
-                                    <i class="fas fa-coffee text-brown-500 mr-2"></i> Coffee cup
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="md:w-1/2 p-8 flex items-center">
-                        <div class="text-center w-full">
-                            <div class="w-32 h-32 mx-auto mb-6">
-<dotlottie-wc src="https://lottie.host/7bc4bc81-4199-4f42-9319-8c13efb61b5a/VOzXsgCG2u.lottie" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></dotlottie-wc>             
-                            </div>
-                            <h4 class="font-fredoka text-xl font-bold mb-2">Pick an item to begin!</h4>
-                            <p class="text-gray-500">We'll show you exactly where it belongs (and why).</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-           <!-- Download Section -->
-<div class="mt-16 text-center">
-    <a href="https://www.wien.gv.at/umwelt/ma48/service/publikationen/pdf/flugblatt-getrennte-sammlung-en.pdf" 
-        download 
-        class="inline-block px-8 py-4 bg-white rounded-full font-bold text-lg shadow-lg btn-hover wiggle flex items-center mx-auto w-max"
-    >
-        <i class="fas fa-download mr-2"></i> Download Full Waste Guide (PDF)
-    </a>
-    <p class="mt-4 text-gray-500">Available in 4 languages with cute illustrations 🎨</p>
-</div>
-
-    <!-- Bin Finder Map -->
-    <section id="map" class="py-20 px-6 bg-white">
-        <div class="container mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="font-fredoka text-4xl md:text-5xl font-bold mb-6"><span class="text-yellow-500">Bin Finder</span> Map</h2>
-                <p class="text-xl max-w-3xl mx-auto">Find the nearest recycling bins and waste stations in Vienna - filtered by what you need to toss.</p>
-            </div>
-            
-            <div class="bg-gradient-to-br from-yellow-50 to-green-50 rounded-super p-1 shadow-xl mb-12">
-                <div class="bg-white rounded-super overflow-hidden">
-                    <div class="md:flex">
-                        <div class="md:w-1/3 p-6 border-r border-gray-100">
-                            <h3 class="font-fredoka text-xl font-bold mb-4">Filter Bins</h3>
-                            
-                            <div class="space-y-4">
-                                <div class="flex items-center p-3 bg-blue-50 rounded-xl">
-                                    <input type="checkbox" id="paperBins" checked class="w-5 h-5 text-blue-500 rounded focus:ring-blue-400">
-                                    <label for="paperBins" class="ml-3 flex items-center">
-                                        <div class="w-4 h-4 rounded-full bg-blue-500 mr-2"></div>
-                                        Paper & Cardboard
-                                    </label>
-                                </div>
-                                
-                                <div class="flex items-center p-3 bg-yellow-50 rounded-xl">
-                                    <input type="checkbox" id="plasticBins" checked class="w-5 h-5 text-yellow-500 rounded focus:ring-yellow-400">
-                                    <label for="plasticBins" class="ml-3 flex items-center">
-                                        <div class="w-4 h-4 rounded-full bg-yellow-500 mr-2"></div>
-                                        Plastic & Metal
-                                    </label>
-                                </div>
-                                
-                                <div class="flex items-center p-3 bg-green-50 rounded-xl">
-                                    <input type="checkbox" id="bioBins" checked class="w-5 h-5 text-green-500 rounded focus:ring-green-400">
-                                    <label for="bioBins" class="ml-3 flex items-center">
-                                        <div class="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
-                                        Bio Waste
-                                    </label>
-                                </div>
-                                
-                                <div class="flex items-center p-3 bg-purple-50 rounded-xl">
-                                    <input type="checkbox" id="glassBins" checked class="w-5 h-5 text-purple-500 rounded focus:ring-purple-400">
-                                    <label for="glassBins" class="ml-3 flex items-center">
-                                        <div class="w-4 h-4 rounded-full bg-purple-500 mr-2"></div>
-                                        Glass
-                                    </label>
-                                </div>
-                                
-                                <button class="w-full mt-4 py-3 bg-gradient-to-r from-green-400 to-blue-400 text-white rounded-full font-bold btn-hover flex items-center justify-center">
-                                    <i class="fas fa-location-arrow mr-2"></i> Find Near Me
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="md:w-2/3 h-96 relative">
-                            <div class="absolute inset-0 bg-gray-200 flex items-center justify-center rounded-br-super overflow-hidden">
-                                <div class="text-center">
-                                    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_vnikrcia.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
-                                    <p class="text-gray-700 font-medium">Interactive Map (Demo)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="max-w-4xl mx-auto text-center">
-                <h3 class="font-fredoka text-2xl font-bold mb-4">📍 Pro Tip: Special Waste Spots</h3>
-                <p class="mb-6">Some items like batteries, lightbulbs, and old electronics need special disposal. Here's where to take them:</p>
-                
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div class="bg-gradient-to-br from-green-50 to-blue-50 p-4 rounded-xl">
-                        <div class="w-16 h-16 mx-auto mb-3">
-                            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_isbiybfh.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
-                        </div>
-                        <h4 class="font-fredoka font-bold">Batteries</h4>
-                        <p class="text-sm">Any electronics store (Saturn, MediaMarkt)</p>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-yellow-50 to-coral-50 p-4 rounded-xl">
-                        <div class="w-16 h-16 mx-auto mb-3">
-                            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_isbiybfh.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
-                        </div>
-                        <h4 class="font-fredoka font-bold">Lightbulbs</h4>
-                        <p class="text-sm">Hardware stores (Bauhaus, OBI)</p>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-purple-50 to-blue-50 p-4 rounded-xl">
-                        <div class="w-16 h-16 mx-auto mb-3">
-                            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_isbiybfh.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
-                        </div>
-                        <h4 class="font-fredoka font-bold">Electronics</h4>
-                        <p class="text-sm">48 Altstoffsammelzentren (ASZ) around Vienna</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!-- Instagram Embed Script (only once per page!) -->
-<script async src="https://www.instagram.com/embed.js"></script>
-
-<!-- Social Media Section -->
-<section class="py-20 px-6 bg-gradient-to-br from-blue-50 to-purple-50">
-  <div class="container mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="font-fredoka text-4xl md:text-5xl font-bold mb-6">
-        Follow Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500">Recycling Adventures</span>
-      </h2>
-      <p class="text-xl max-w-3xl mx-auto">We make waste sorting fun on social media (yes, really!)</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-
-      <!-- Instagram Embed -->
-      <div class="bg-gray-100 rounded-xl p-4">
-        <div class="overflow-hidden rounded-lg mb-3">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DHiqqJmtv7E/" data-instgrm-version="14" style="width:100%; max-width:540px; margin:auto;"></blockquote>
-        </div>
-        <div class="text-center mt-3">
-          <a href="https://www.instagram.com/viennatrashtalk" class="text-purple-500 font-medium">Follow @viennatrashtalk</a>
-        </div>
-      </div>
-
-      <!-- TikTok Embed (placeholder graphic style) -->
-      <div class="bg-gray-100 rounded-xl p-4">
-        <div class="overflow-hidden rounded-lg mb-3 relative pb-[125%]">
-          <div class="absolute inset-0 bg-gradient-to-tr from-blue-200 to-green-200 flex items-center justify-center">
-            <i class="fas fa-film text-3xl text-white opacity-50"></i>
-          </div>
-        </div>
-        <div class="text-center mt-3">
-          <a href=https://www.tiktok.com/@viennatrashtalk/video/7489079486806330646" class="text-gray-800 font-medium">Watch on TikTok</a>
-        </div>
-      </div>
-
-      <!-- YouTube Embed -->
-      <div class="bg-gray-100 rounded-xl p-4">
-        <div class="overflow-hidden rounded-lg mb-3 relative pb-[56.25%]">
-          <iframe 
-            class="absolute top-0 left-0 w-full h-full rounded-lg"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="text-center mt-3">
-          <a href="https://www.youtube.com/@viennatrashtalk" class="text-red-500 font-medium">Subscribe on YouTube</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-    <!-- Get Involved -->
-    <section id="join" class="py-20 px-6 bg-white">
-        <div class="container mx-auto max-w-5xl">
-            <div class="text-center mb-16">
-                <h2 class="font-fredoka text-4xl md:text-5xl font-bold mb-6">Join Vienna's <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500">Clean Team</span></h2>
-                <p class="text-xl max-w-3xl mx-auto">Because making Vienna greener is more fun with friends!</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8 mb-16">
-                <!-- Volunteer -->
-                <div class="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-super shadow-md hover:shadow-lg transition">
-                    <div class="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-inner mb-6">
-                        <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_obidsi0t.json" background="transparent" speed="1" style="width: 40px; height: 40px;" loop autoplay></lottie-player>
-                    </div>
-                    <h3 class="font-fredoka text-2xl font-bold mb-4">Be a "Binfluencer"</h3>
-                    <p class="mb-6">Help educate your neighborhood with simple recycling tips in your language.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center">
-                            <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center mr-2 shadow-sm">
-                                <i class="fas fa-check text-green-500 text-xs"></i>
-                            </div>
-                            <span>2-hour training session</span>
-                        </li>
-                        <li class="flex items-center">
-                            <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center mr-2 shadow-sm">
-                                <i class="fas fa-check text-green-500 text-xs"></i>
-                            </div>
-                            <span>Cute educational materials</span>
-                        </li>
-                        <li class="flex items-center">
-                            <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center mr-2 shadow-sm">
-                                <i class="fas fa-check text-green-500 text-xs"></i>
-                            </div>
-                            <span>Community meetups</span>
-                        </li>
-                    </ul>
-                    <button class="w-full py-3 bg-gradient-to-r from-green-400 to-blue-400 text-white rounded-full font-bold btn-hover wiggle">
-                        Sign Up to Volunteer
-                    </button>
-                </div>
-                
-                <!-- Partner -->
-                <div class="bg-gradient-to-br from-yellow-50 to-coral-50 p-8 rounded-super shadow-md hover:shadow-lg transition">
-                    <div class="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-inner mb-6">
-                        <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_obidsi0t.json" background="transparent" speed="1" style="width: 40px; height: 40px;" loop autoplay></lottie-player>
-                    </div>
-                    <h3 class="font-fredoka text-2xl font-bold mb-4">Partner With Us</h3>
-                    <p class="mb-6">Are you a school, expat group, or business that wants recycling education?</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center">
-                            <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center mr-2 shadow-sm">
-                                <i class="fas fa-check text-coral-500 text-xs"></i>
-                            </div>
-                            <span>Workshops for groups</span>
-                        </li>
-                        <li class="flex items-center">
-                            <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center mr-2 shadow-sm">
-                                <i class="fas fa-check text-coral-500 text-xs"></i>
-                            </div>
-                            <span>Custom language materials</span>
-                        </li>
-                        <li class="flex items-center">
-                            <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center mr-2 shadow-sm">
-                                <i class="fas fa-check text-coral-500 text-xs"></i>
-                            </div>
-                            <span>Event collaborations</span>
-                        </li>
-                    </ul>
-                    <button class="w-full py-3 bg-gradient-to-r from-coral-400 to-yellow-400 text-white rounded-full font-bold btn-hover wiggle">
-                        Partner Inquiry
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Newsletter -->
-<section class="px-6 py-20 bg-white">
-  <div class="bg-gradient-to-r from-green-400 to-blue-400 rounded-xl p-1 shadow-xl">
-    <div class="bg-white rounded-xl p-8 md:p-10">
-      <form action="https://formspree.io/f/xpwpylwk" method="POST">
-        <div class="md:flex items-center">
-          <!-- Left Content -->
-          <div class="md:w-1/2 mb-8 md:mb-0">
-            <h3 class="font-fredoka text-3xl font-bold mb-3">Get Recycling Tips via Email!</h3>
-            <p>Monthly updates with colorful guides, events, and Vienna waste news.</p>
-          </div>
-
-          <!-- Form Input -->
-          <div class="md:w-1/2">
-            <div class="flex">
-              <input 
-                type="email" 
-                name="email"
-                placeholder="Your email" 
-                required
-                class="flex-grow px-5 py-3 rounded-l-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-400"
-              />
-              <button 
-                type="submit" 
-                class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-r-full font-bold hover:opacity-90 transition"
-              >
-                Sign Up
-              </button>
-            </div>
-            <p class="text-sm mt-3 text-gray-500">We'll never spam you. Pinky promise! 🤙</p>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
-    <!-- FAQ -->
-    <section class="py-20 px-6 bg-gradient-to-br from-blue-50 to-green-50">
-        <div class="container mx-auto max-w-4xl">
-            <div class="text-center mb-16">
-            <h2 class="font-fredoka text-4xl md:text-5xl font-bold mb-6">Burning <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500">Recycling Questions</span></h2>
-                <p class="text-xl">We've got answers (and no judgment!)</p>
-            </div>
-            
-            <div class="space-y-4 mb-12">
-                <!-- FAQ Item 1 -->
-                <div class="bg-white p-6 rounded-super shadow-md">
-                    <button class="faq-toggle w-full flex justify-between items-center text-left">
-                        <h3 class="font-fredoka text-lg font-bold">Can I recycle pizza boxes in Vienna?</h3>
-                        <i class="fas fa-chevron-down text-blue-500"></i>
-                    </button>
-                    <div class="faq-content mt-4 hidden">
-                        <p>Great question! Unfortunately, pizza boxes with grease/food residue go in the residual waste (black bin). Only clean cardboard can be recycled as paper. Pro tip: Tear off any clean parts for the paper bin!</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 2 -->
-                <div class="bg-white p-6 rounded-super shadow-md">
-                    <button class="faq-toggle w-full flex justify-between items-center text-left">
-                        <h3 class="font-fredoka text-lg font-bold">Where do plastic bags go?</h3>
-                        <i class="fas fa-chevron-down text-blue-500"></i>
-                    </button>
-                    <div class="faq-content mt-4 hidden">
-                        <p>Plastic bags are Vienna's recycling troublemakers! They don't belong in the yellow bin—take them to collection points at grocery stores (look for the plastic bag recycling bins). Better yet: Use reusable bags!</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 3 -->
-                <div class="bg-white p-6 rounded-super shadow-md">
-                    <button class="faq-toggle w-full flex justify-between items-center text-left">
-                        <h3 class="font-fredoka text-lg font-bold">What about coffee capsules?</h3>
-                        <i class="fas fa-chevron-down text-blue-500"></i>
-                    </button>
-                    <div class="faq-content mt-4 hidden">
-                        <p>Aluminum capsules (like Nespresso) can be returned to Nespresso boutique stores. Plastic capsules (like Dolce Gusto) currently go in residual waste. We're lobbying for better solutions—stay tuned!</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 4 -->
-                <div class="bg-white p-6 rounded-super shadow-md">
-                    <button class="faq-toggle w-full flex justify-between items-center text-left">
-                        <h3 class="font-fredoka text-lg font-bold">Do I need to wash recycling?</h3>
-                        <i class="fas fa-chevron-down text-blue-500"></i>
-                    </button>
-                    <div class="faq-content mt-4 hidden">
-                        <p>Give containers a quick rinse—they don't need to be spotless, but major food residue can contaminate recycling. Pro water-saving tip: Use leftover dishwater or rinse while washing other dishes!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <a href="#" class="inline-block px-6 py-3 rounded-full bg-white shadow-lg font-medium btn-hover">
-                    <i class="far fa-envelope mr-2"></i> Ask Us Another Question
-                </a>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Footer -->
-    <footer class="pt-20 pb-10 px-6 bg-gradient-to-b from-green-600 to-green-800 text-white">
-        <div class="container mx-auto">
-            <div class="grid md:grid-cols-4 gap-10 mb-16">
-                <!-- Logo & Mission -->
+    <footer class="bg-black bg-opacity-50 py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div>
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mr-3">
-<dotlottie-wc src="https://lottie.host/7bc4bc81-4199-4f42-9319-8c13efb61b5a/VOzXsgCG2u.lottie" background="transparent" speed="1" style="width: 30px; height: 30px;" loop autoplay></dotlottie-wc>             
-                        </div>
-                        <span class="font-fredoka text-2xl font-bold">RecycleRight</span>
-                    </div>
-                    <p class="mb-6">Making Vienna's waste system accessible and fun for international residents since 2025.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition">
-                            <i class="fab fa-instagram"></i>
+                    <h3 class="text-2xl font-bold mb-6">Let's Connect</h3>
+                    <p class="mb-6">
+                        Interested in collaborating or just want to chat about design and experiences? Reach out!
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="social-icon w-10 h-10 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition">
-                            <i class="fab fa-tiktok"></i>
+                        <a href="#" class="social-icon w-10 h-10 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition">
-                            <i class="fab fa-youtube"></i>
+                        <a href="#" class="social-icon w-10 h-10 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                            <i class="fab fa-dribbble"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition">
-                            <i class="fab fa-facebook-f"></i>
+                        <a href="#" class="social-icon w-10 h-10 rounded-full bg-black bg-opacity-30 flex items-center justify-center">
+                            <i class="fab fa-behance"></i>
                         </a>
                     </div>
                 </div>
                 
-                <!-- Quick Links -->
                 <div>
-                    <h3 class="font-fredoka text-xl font-bold mb-6">Quick Links</h3>
+                    <h3 class="text-2xl font-bold mb-6">Quick Links</h3>
                     <ul class="space-y-3">
-                        <li><a href="#" class="hover:text-yellow-200 transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2 opacity-50"></i> Sorting Guides</a></li>
-                        <li><a href="#" class="hover:text-yellow-200 transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2 opacity-50"></i> Bin Finder Map</a></li>
-                        <li><a href="#" class="hover:text-yellow-200 transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2 opacity-50"></i> Download Resources</a></li>
-                        <li><a href="#" class="hover:text-yellow-200 transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2 opacity-50"></i> Community Events</a></li>
-                        <li><a href="#" class="hover:text-yellow-200 transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2 opacity-50"></i> Volunteer</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition">Home</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition">About</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition">Case Studies</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition">Process</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition">Contact</a></li>
                     </ul>
                 </div>
                 
-                <!-- Contact -->
                 <div>
-                    <h3 class="font-fredoka text-xl font-bold mb-6">Contact Us</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center">
-                            <i class="fas fa-map-marker-alt text-yellow-200 mr-3"></i>
-                            <span>Lindengasse 40/12, 1070 Wien</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope text-yellow-200 mr-3"></i>
-                            <span>hello@recycleright.vienna</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone-alt text-yellow-200 mr-3"></i>
-                            <span>+43 1 234 5678</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Did You Know? -->
-                <div class="bg-white/10 rounded-xl p-6">
-                    <h3 class="font-fredoka text-xl font-bold mb-4 flex items-center">
-                        <i class="fas fa-lightbulb text-yellow-200 mr-2"></i> Did You Know?
-                    </h3>
-                    <p class="mb-4">Viennese households throw away about 500kg per person yearly—that's like tossing out a baby elephant! 🐘</p>
-                    <div class="flex justify-center">
-<dotlottie-wc src="https://lottie.host/7bc4bc81-4199-4f42-9319-8c13efb61b5a/VOzXsgCG2u.lottie" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></dotlottie-wc>             
-                    </div>
+                    <h3 class="text-2xl font-bold mb-6">Newsletter</h3>
+                    <p class="mb-4">
+                        Get insights on design, marketing, and experiential strategy delivered to your inbox.
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-3 bg-black bg-opacity-30 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-neon-mint w-full">
+                        <button type="submit" class="bg-neon-mint text-black px-4 rounded-r-lg font-bold">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
             
-            <div class="pt-10 border-t border-white/20 flex flex-col md:flex-row justify-between items-center">
-                <p class="mb-4 md:mb-0">©2025 Vienna Trashtalk. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-yellow-200 transition">Made by Margad-Erdene Ganbold</a>
-                </div>
+            <div class="border-t border-white border-opacity-10 mt-12 pt-8 text-center text-sm opacity-70">
+                <p>© 2025 Experience Design Studio. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
+    
     <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
         
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenuButton.innerHTML = mobileMenu.classList.contains('hidden') ? 
-                '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
-        });
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                        mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                }
-            });
-        });
-        
-        // FAQ accordion
-        document.querySelectorAll('.faq-toggle').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const icon = button.querySelector('i');
-                
-                content.classList.toggle('hidden');
-                icon.classList.toggle('fa-chevron-down');
-                icon.classList.toggle('fa-chevron-up');
-            });
-        });
-        
-        // Animate elements on scroll
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.waste-card, .animate-fade-in');
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
             
-            elements.forEach(el => {
-                const elementPosition = el.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if (elementPosition < screenPosition) {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }
-            });
-        };
-        
-        // Set initial state for animation
-        document.querySelectorAll('.waste-card, .animate-fade-in').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease-out';
+            if (body.classList.contains('dark-mode')) {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                darkModeToggle.classList.remove('light');
+                darkModeToggle.classList.add('dark');
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                darkModeToggle.classList.remove('dark');
+                darkModeToggle.classList.add('light');
+            }
         });
         
-        // Listen for scroll events
-        window.addEventListener('scroll', animateOnScroll);
-        document.addEventListener('DOMContentLoaded', animateOnScroll);
+        // Count Up Animation
+        const countUpElements = document.querySelectorAll('.count-up');
         
-        // Add wiggle effect to buttons periodically
-        setInterval(() => {
-            const wiggleButtons = document.querySelectorAll('.wiggle');
-            wiggleButtons.forEach(btn => {
-                btn.classList.add('animate-wiggle');
-                setTimeout(() => {
-                    btn.classList.remove('animate-wiggle');
-                }, 1000);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    const duration = 2000;
+                    const start = 0;
+                    const increment = target / (duration / 16);
+                    
+                    let current = start;
+                    const element = entry.target;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            clearInterval(timer);
+                            current = target;
+                        }
+                        element.textContent = Math.floor(current).toLocaleString();
+                    }, 16);
+                    
+                    observer.unobserve(entry.target);
+                }
             });
-        }, 15000);
+        }, { threshold: 0.5 });
+        
+        countUpElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Carousel Navigation
+        const carouselTrack = document.querySelector('.carousel-track');
+        const carouselPrev = document.querySelector('.carousel-prev');
+        const carouselNext = document.querySelector('.carousel-next');
+        
+        let currentSlide = 0;
+        
+        carouselNext.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % 3;
+            updateCarousel();
+        });
+        
+        carouselPrev.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + 3) % 3;
+            updateCarousel();
+        });
+        
+        function updateCarousel() {
+            const offset = -currentSlide * 100;
+            carouselTrack.style.transform = `translateX(${offset}%)`;
+        }
+        
+        // Testimonial Cube Rotation
+        const testimonialCube = document.querySelector('.testimonial-cube');
+        const testimonialPrev = document.querySelector('.testimonial-prev');
+        const testimonialNext = document.querySelector('.testimonial-next');
+        const testimonialQuote = document.querySelector('.testimonial-quote');
+        
+        const quotes = [
+            {
+                text: '"Transformed our conversion funnel with intuitive UX that reduced drop-offs by 38% while increasing average order value."',
+                name: "Sarah Johnson",
+                title: "Director of Product, Google"
+            },
+            {
+                text: '"The marketing campaign delivered 3.2x ROI and became our highest-performing launch of the year."',
+                name: "Michael Chen",
+                title: "VP Marketing, Amazon"
+            },
+            {
+                text: '"Our conference achieved record attendance and engagement thanks to the immersive experience design."',
+                name: "David Wilson",
+                title: "Events Director, Microsoft"
+            },
+            {
+                text: '"The design system implementation saved our team 300+ hours annually in development time."',
+                name: "Emily Rodriguez",
+                title: "Design Lead, Apple"
+            },
+            {
+                text: '"User satisfaction scores jumped from 72% to 94% after the app redesign."',
+                name: "Robert Taylor",
+                title: "Product Manager, Facebook"
+            },
+            {
+                text: '"The experiential activation generated 1.2M social impressions and 15K leads."',
+                name: "Jennifer Lee",
+                title: "Brand Director, Netflix"
+            }
+        ];
+        
+        let currentFace = 0;
+        
+        testimonialNext.addEventListener('click', () => {
+            currentFace = (currentFace + 1) % 6;
+            rotateCube();
+            updateTestimonial();
+        });
+        
+        testimonialPrev.addEventListener('click', () => {
+            currentFace = (currentFace - 1 + 6) % 6;
+            rotateCube();
+            updateTestimonial();
+        });
+        
+        function rotateCube() {
+            const angle = currentFace * 90;
+            testimonialCube.style.transform = `rotateY(${angle}deg)`;
+        }
+        
+        function updateTestimonial() {
+            const quote = quotes[currentFace];
+            testimonialQuote.innerHTML = `
+                <div class="text-2xl mb-6 leading-relaxed">"${quote.text}"</div>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center mr-4">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold">${quote.name}</div>
+                        <div class="text-sm opacity-80">${quote.title}</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Ripple Effect
+        const buttons = document.querySelectorAll('.ripple');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const x = e.clientX - e.target.getBoundingClientRect().left;
+                const y = e.clientY - e.target.getBoundingClientRect().top;
+                
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+        
+        // Three.js Background
+        const threeContainer = document.getElementById('threejs-container');
+        
+        if (threeContainer) {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            threeContainer.appendChild(renderer.domElement);
+            
+            // Particles
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 1000;
+            
+            const posArray = new Float32Array(particlesCount * 3);
+            
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 10;
+            }
+            
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.02,
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+            
+            camera.position.z = 5;
+            
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                particlesMesh.rotation.x += 0.0005;
+                particlesMesh.rotation.y += 0.0005;
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+        
+        // Konami Code Easter Egg
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                
+                if (konamiIndex === konamiCode.length) {
+                    // Trigger Easter Egg
+                    document.body.classList.add('konami');
+                    setTimeout(() => {
+                        document.body.classList.remove('konami');
+                    }, 3000);
+                    
+                    // Reset index
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
     </script>
 </body>
 </html>
