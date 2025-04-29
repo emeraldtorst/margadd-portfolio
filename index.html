@@ -130,20 +130,7 @@
             from, to { border-color: transparent }
             50% { border-color: var(--neon-mint); }
         }
-        
-        .neon-flicker {
-            animation: neon-flicker 2s infinite alternate;
-        }
-        
-        @keyframes neon-flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                text-shadow: 0 0 8px var(--neon-mint), 0 0 16px var(--neon-mint);
-            }
-            20%, 24%, 55% {        
-                text-shadow: none;
-            }
-        }
-        
+
         .stat-pill {
             background: rgba(255, 255, 255, 0.15);
             border-left: 3px solid var(--neon-mint);
