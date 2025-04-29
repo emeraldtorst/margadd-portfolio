@@ -240,6 +240,22 @@
                 background: linear-gradient(135deg, var(--sunrise-pink), var(--tangerine)) !important;
             }
         }
+/* ——————————————————————————————
+   FORCE ALL TEXT TO CLEAN WHITE
+   —————————————————————————————— */
+body, 
+body * {
+  color: #ffffff !important;
+}
+
+/* Fix up any special components that might have
+   their own colored borders or hover text */
+.btn-secondary {
+  border-color: #ffffff !important;
+}
+.btn-secondary:hover {
+  color: #ffffff !important;
+}
     </style>
 </head>
 <body class="min-h-screen overflow-x-hidden">
